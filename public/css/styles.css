@@ -1845,3 +1845,125 @@ p, li, dd, .lead { text-wrap: pretty; overflow-wrap: break-word; }
 }
 .leaflet-tooltip.map-label { background: var(--navy-900); color: #fff; border: 0; font-size: .74rem; padding: 3px 8px; box-shadow: var(--shadow-md); }
 .leaflet-tooltip.map-label::before { display: none; }
+
+/* =========================================================================
+   28. Compacto y táctil: sin desbordes laterales, tipografía más contenida
+   ========================================================================= */
+/* Nada puede ensanchar la página (evita la "media página en blanco" al hacer zoom) */
+html, body { max-width: 100%; overflow-x: clip; }
+@supports not (overflow-x: clip) { html, body { overflow-x: hidden; } }
+
+/* Menú móvil: aparece en su sitio (ya no se esconde fuera de la pantalla) */
+@media (max-width: 1100px) {
+  .nav {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+  }
+  .nav-open .nav { transform: none; opacity: 1; pointer-events: auto; }
+  .nav__list a { font-size: 1.15rem; padding: 11px 4px; }
+}
+
+/* Ritmo general más compacto */
+:root { --section-y: clamp(44px, 6vw, 88px); --header-h: 64px; }
+body { font-size: .9375rem; line-height: 1.55; }
+@media (min-width: 1024px) { body { font-size: 1rem; } }
+p { line-height: 1.55; }
+.section-head { margin-bottom: clamp(24px, 3.5vw, 44px); }
+.section-head .h2 { margin-bottom: 10px; }
+.eyebrow { font-size: .72rem; margin-bottom: 10px; }
+
+.hero__title { font-size: clamp(1.8rem, 1.05rem + 2.6vw, 3.4rem); line-height: 1.08; margin-bottom: 16px; }
+.hero__lead { font-size: clamp(.95rem, .9rem + .25vw, 1.1rem); margin-bottom: 24px; }
+.hero__ctas { margin-bottom: 24px; gap: 10px; }
+.hero { padding-bottom: clamp(56px, 7vw, 100px); padding-top: calc(var(--header-h) + clamp(28px, 5vw, 72px)); }
+.pill { margin-bottom: 18px; font-size: .78rem; }
+.h2 { font-size: clamp(1.45rem, 1.02rem + 1.35vw, 2.35rem); }
+.h3 { font-size: clamp(1.08rem, 1rem + .35vw, 1.3rem); }
+.lead { font-size: clamp(.95rem, .92rem + .16vw, 1.06rem); }
+.page-hero { padding: calc(var(--header-h) + clamp(22px, 4vw, 52px)) 0 clamp(26px, 4vw, 44px); }
+.page-hero__title { font-size: clamp(1.55rem, 1.05rem + 1.7vw, 2.6rem); margin-bottom: 6px; }
+.page-hero__lead { font-size: clamp(.92rem, .9rem + .15vw, 1.02rem); }
+.page-hero__tabs { margin-top: 14px; }
+.page-hero__tab { padding: 6px 13px; font-size: .82rem; }
+
+.btn { --bh: 44px; font-size: .92rem; padding: 0 20px; }
+.btn--lg { --bh: 50px; font-size: .97rem; padding: 0 24px; }
+.btn--sm { --bh: 38px; font-size: .86rem; }
+
+/* Tarjetas con menos relleno */
+.stat { padding: 20px 22px; }
+.stat__num { font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.7rem); margin-bottom: 4px; }
+.stat__icon { margin-bottom: 10px; width: 22px; height: 22px; }
+.stat__label { font-size: .82rem; line-height: 1.4; }
+.value, .service, .project, .timeline, .segments, .equipment, .commit__col, .quote__form, .quote__done { padding: 20px; }
+.service__media { margin: -20px -20px 16px; height: 160px; }
+.service__top { margin-top: 0; margin-bottom: 14px; }
+.service__icon { width: 46px; height: 46px; border-radius: 13px; border: 0; }
+.service__icon .i { width: 22px; height: 22px; }
+.service__num { margin-top: 0; font-size: 1.9rem; }
+.service > p, .checklist li { font-size: .9rem; }
+.value__icon { width: 42px; height: 42px; margin-bottom: 12px; }
+.value h4 { font-size: 1rem; }
+.value p { font-size: .88rem; }
+.ficha { padding: 22px; }
+.ficha__list { gap: 9px; }
+.ficha__list div { font-size: .86rem; grid-template-columns: 120px 1fr; }
+.tabs__panel { padding: 18px 20px; }
+.tabs__panel p, .about__copy > p { font-size: .95rem; }
+.project__meta div { font-size: .86rem; grid-template-columns: 112px 1fr; }
+.process__num { width: 50px; height: 50px; font-size: 1.2rem; margin-bottom: 14px; }
+.process::before { top: 23px; left: 29px; right: calc((100% - 72px) / 5 - 29px); }
+.process__step p { font-size: .88rem; }
+.hseq__tile { padding: 20px; }
+.hseq__tile > .i { width: 40px; height: 40px; padding: 9px; margin-bottom: 14px; }
+.hseq__tile h3 { font-size: 1.1rem; }
+.hseq__tile p { font-size: .88rem; }
+.faq__item summary { padding: 14px 18px; font-size: .95rem; }
+.faq__item p { padding: 0 18px 16px; font-size: .92rem; }
+.safety__steps li { padding: 14px 16px; }
+.safety__icon { width: 40px; height: 40px; }
+.ccard { padding: 12px 14px; gap: 12px; }
+.ccard__icon { width: 40px; height: 40px; }
+.ccard strong { font-size: .9rem; }
+.hours { display: grid; gap: 1px; font-weight: 600; line-height: 1.35; }
+.hours span { display: block; white-space: nowrap; }
+.office { padding: 16px 18px; }
+.quote__head h3 { font-size: 1.25rem; }
+.choice span { min-height: 50px; font-size: .86rem; }
+.choices--4 .choice span { min-height: 80px; }
+.choices--3 .choice span { min-height: 90px; }
+.field input, .field textarea { padding: 11px 13px; font-size: 1rem; }
+.cta__inner { padding: clamp(22px, 4vw, 40px); gap: 20px; }
+.explore { grid-auto-rows: 230px; gap: 14px; }
+.explore__body { padding: 18px; }
+.explore__body strong { font-size: 1.1rem; }
+.explore__card--big .explore__body strong { font-size: clamp(1.3rem, 1rem + 1.2vw, 1.8rem); }
+.gallery { grid-auto-rows: 190px; gap: 12px; }
+.footer { padding-top: 52px; }
+.footer__grid { padding-bottom: 36px; gap: 28px; }
+.marquee { padding: 32px 0 6px; }
+.journey__card p { min-height: 0; font-size: .92rem; }
+
+/* Celulares y tablets: nada encima de nada */
+@media (max-width: 960px) {
+  .stats { margin-top: 16px; }
+  .hero__visual { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; perspective: none; }
+  .hero__photo { position: relative; inset: auto !important; width: auto !important; transform: none !important; }
+  .hero__photo--main { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .hero__photo--a, .hero__photo--b { aspect-ratio: 4 / 3; }
+  .float-card { position: relative; inset: auto; animation: none; box-shadow: var(--shadow-md); }
+  .float-card--meters { grid-column: 1 / -1; order: -1; }
+  .float-card--badge { display: none; }
+}
+@media (max-width: 600px) {
+  :root { --gutter: 16px; }
+  .service__media { height: 150px; }
+  .explore { grid-auto-rows: 190px; }
+  .gallery { grid-auto-rows: 140px; }
+  .hero__trust { gap: 6px 16px; font-size: .82rem; }
+  .ficha__list div { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 1100px) { .nav { inset: var(--nav-top, var(--header-h)) 0 0 0; } }
+.nav-open .fab, .nav-open .to-top { display: none; }

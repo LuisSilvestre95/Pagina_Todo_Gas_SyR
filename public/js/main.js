@@ -108,6 +108,7 @@
   const navToggle = $('#navToggle');
   const nav = $('#nav');
   function setNav(open) {
+    if (open && header) document.documentElement.style.setProperty('--nav-top', `${Math.round(header.getBoundingClientRect().bottom)}px`);
     document.body.classList.toggle('nav-open', open);
     navToggle?.setAttribute('aria-expanded', String(open));
     navToggle?.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
