@@ -329,7 +329,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 
 @media (max-width: 760px) {
   .topbar__links li:first-child { display: none; }
-  .topbar__status .label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 62vw; }
+  .topbar__inner { gap: 10px; }
+  .topbar__status { flex: 1; min-width: 0; }
+  .topbar__status .label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 }
 
 /* ---------- 6. Header ---------- */
