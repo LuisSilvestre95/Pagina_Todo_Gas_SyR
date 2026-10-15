@@ -13,7 +13,7 @@
     "node": ">=20"
   },
   "optionalDependencies": {
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^10.1.1"
   },
   "license": "UNLICENSED"
 }
