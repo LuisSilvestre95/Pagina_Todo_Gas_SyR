@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel de solicitudes | TODO GAS SYR S.A.S.</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0B1F33">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body class="page">
+  <header class="page-header">
+    <div class="container page-header__inner">
+      <a href="./" class="brand" aria-label="Ir al sitio">
+        <img src="assets/img/llama.webp" alt="" width="30" height="42" class="brand__flame">
+        <span class="brand__text"><strong>TODO <em>GAS</em> SYR</strong><small>Panel de solicitudes</small></span>
+      </a>
+      <button class="btn btn--outline btn--sm" id="logout" hidden>Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="container admin">
+    <form class="admin__login" id="login">
+      <h1>Ingresar</h1>
+      <p>Escribe el token de administración (variable <code>ADMIN_TOKEN</code> del servidor).</p>
+      <label for="token" class="sr-only">Token</label>
+      <input id="token" type="password" autocomplete="current-password" placeholder="Token de acceso" required>
+      <p class="admin__error" id="loginError" role="alert"></p>
+      <button class="btn btn--primary btn--block" type="submit">Entrar</button>
+    </form>
+
+    <section id="panel" hidden>
+      <h1>Solicitudes de cotización</h1>
+      <p>Gestiona los contactos que llegan desde la página web.</p>
+
+      <div class="admin__kpis" id="kpis"></div>
+
+      <div class="admin__bar">
+        <div class="admin__filters">
+          <input id="q" type="search" placeholder="Buscar nombre, municipio, teléfono…" aria-label="Buscar">
+          <select id="fEstado" aria-label="Filtrar por estado">
+            <option value="">Todos los estados</option>
+            <option value="nueva">Nueva</option>
+            <option value="contactada">Contactada</option>
+            <option value="cotizada">Cotizada</option>
+            <option value="ganada">Ganada</option>
+            <option value="descartada">Descartada</option>
+          </select>
+        </div>
+        <div class="admin__filters">
+          <button class="btn btn--outline btn--sm" id="refresh" type="button">Actualizar</button>
+          <button class="btn btn--primary btn--sm" id="csv" type="button">Exportar CSV</button>
+        </div>
+      </div>
+
+      <div class="admin__table-wrap">
+        <table>
+          <thead>
+            <tr><th>Radicado</th><th>Cliente</th><th>Contacto</th><th>Servicio</th><th>Mensaje</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p class="admin__empty" id="empty" hidden>No hay solicitudes con esos filtros.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="toasts" id="toasts" aria-live="assertive"></div>
+  <script src="js/admin.js" defer></script>
+</body>
+</html>

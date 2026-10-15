@@ -1,0 +1,19 @@
+{
+  "name": "todo-gas-syr-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web corporativo de TODO GAS SYR S.A.S. — redes de gas natural y GLP.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "optionalDependencies": {
+    "nodemailer": "^6.9.16"
+  },
+  "license": "UNLICENSED"
+}
