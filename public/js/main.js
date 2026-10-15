@@ -85,6 +85,7 @@
   const toTop = $('#toTop');
   const ring = $('#toTopRing');
   if (header && $('.hero')) header.classList.add('is-top');
+  toTop?.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); });
 
   let ticking = false;
   function onScroll() {
@@ -117,24 +118,6 @@
   nav?.addEventListener('click', (e) => { if (e.target.closest('a')) setNav(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(false); });
   window.matchMedia('(min-width: 1101px)').addEventListener('change', (e) => { if (e.matches) setNav(false); });
-
-  /* ---------- Scrollspy ---------- */
-  const navLinks = $$('.nav__list a[href^="#"]');
-  const spyTargets = navLinks.map((a) => $(a.getAttribute('href'))).filter(Boolean);
-  if ('IntersectionObserver' in window && spyTargets.length) {
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach((a) => {
-          const active = a.getAttribute('href') === `#${entry.target.id}`;
-          a.classList.toggle('is-active', active);
-          if (active) a.setAttribute('aria-current', 'true');
-          else a.removeAttribute('aria-current');
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    spyTargets.forEach((s) => spy.observe(s));
-  }
 
   /* ---------- Contadores animados ---------- */
   function animateCounter(el) {
@@ -675,6 +658,122 @@
 
     show(1);
   }
+
+
+  /* ---------- Vistas: cada opción del menú abre su propia página ---------- */
+  const VIEWS = [
+    { id: 'inicio', name: 'Inicio' },
+    { id: 'nosotros', name: 'Nosotros', title: 'Quiénes somos', lead: 'Empresa boyacense con 23 años en redes de gas natural y GLP.' },
+    { id: 'servicios', name: 'Servicios', title: 'Servicios y metodología', lead: 'Redes de gas natural, sistemas de GLP, mantenimiento y obra civil, con un proceso técnico de 5 pasos.' },
+    { id: 'proyectos', name: 'Proyectos', title: 'Proyectos y registro de obra', lead: 'Contratos ejecutados, metros construidos y fotografías reales de nuestros frentes de obra.' },
+    { id: 'instalacion', name: 'Tu instalación', title: 'Tu instalación de gas', lead: 'Cómo llega el gas hasta tu cocina y qué hacer si huele a gas.' },
+    { id: 'cobertura', name: 'Cobertura', title: 'Cobertura geográfica', lead: 'Boyacá, Cundinamarca, Bogotá D.C., Antioquia y proyectos a nivel nacional.' },
+    { id: 'hseq', name: 'HSEQ', title: 'Sistema HSEQ', lead: 'Salud, seguridad, medio ambiente y calidad en cada obra.' },
+    { id: 'contacto', name: 'Contacto', title: 'Contacto y cotizaciones', lead: 'Cuéntanos tu proyecto: te respondemos en horario de atención.' },
+  ];
+  const SUBTABS = {
+    servicios: [['servicios', 'Líneas de servicio'], ['proceso', 'Metodología'], ['zanja', 'Anatomía de una zanja']],
+    proyectos: [['proyectos', 'Experiencia'], ['galeria', 'Registro fotográfico']],
+    instalacion: [['instalacion', 'Instalación domiciliaria'], ['seguridad', '¿Huele a gas?']],
+    contacto: [['contacto', 'Formulario y datos'], ['faq', 'Preguntas frecuentes']],
+  };
+  const viewEls = $$('[data-view]');
+  const pageHero = $('#pageHero');
+  const pager = $('#pager');
+  const baseTitle = document.title;
+  let currentView = null;
+
+  function resolve(hash) {
+    const id = decodeURIComponent((hash || '').replace(/^#/, ''));
+    if (!id) return { view: 'inicio', target: null };
+    const el = document.getElementById(id);
+    const holder = el?.closest('[data-view]');
+    if (!holder || holder.dataset.view === '*') return el ? null : { view: 'inicio', target: null };
+    return { view: holder.dataset.view, target: el };
+  }
+
+  function renderView(view, target, { focus = false, smooth = false } = {}) {
+    const changed = view !== currentView;
+    const info = VIEWS.find((v) => v.id === view) || VIEWS[0];
+    if (changed) {
+      currentView = view;
+      document.body.dataset.view = view;
+      viewEls.forEach((el) => {
+        const v = el.dataset.view;
+        el.hidden = v === '*' ? view === 'contacto' : v !== view;
+      });
+      const isHome = view === 'inicio';
+      pageHero.hidden = isHome;
+      if (!isHome) {
+        $('#crumbCurrent').textContent = info.name;
+        $('#pageTitle').textContent = info.title;
+        $('#pageLead').textContent = info.lead;
+        const tabs = SUBTABS[view] || [];
+        $('#pageTabs').innerHTML = tabs.map(([id, label]) => `<a href="#${id}" class="page-hero__tab">${label}</a>`).join('');
+        $$('.page-hero__tab').forEach((t) => (t.hidden = !document.getElementById(t.getAttribute('href').slice(1))));
+      }
+      document.title = isHome ? baseTitle : `${info.title} | TODO GAS SYR S.A.S.`;
+      // Primera sección de la vista con menos espacio arriba
+      viewEls.forEach((el) => el.classList.remove('is-first'));
+      viewEls.find((el) => el.dataset.view === view)?.classList.add('is-first');
+      // Menú: marcar la vista actual
+      $$('.nav__list a').forEach((a) => {
+        const on = a.getAttribute('href') === `#${view}`;
+        a.classList.toggle('is-active', on);
+        if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      });
+      // Paginador anterior / siguiente
+      const i = VIEWS.findIndex((v) => v.id === view);
+      const prev = VIEWS[i - 1];
+      const next = VIEWS[i + 1];
+      pager.hidden = isHome;
+      pager.innerHTML = `${prev ? `<a href="#${prev.id}" class="pager__link pager__link--prev"><small>Anterior</small><strong>← ${prev.name}</strong></a>` : '<span></span>'}${next ? `<a href="#${next.id}" class="pager__link pager__link--next"><small>Siguiente</small><strong>${next.name} →</strong></a>` : ''}`;
+      // Revelar lo que ya está en pantalla y ajustar el mapa
+      requestAnimationFrame(() => {
+        $$('.reveal:not(.is-visible)').forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0 && !el.closest('[hidden]')) el.classList.add('is-visible');
+        });
+        if (map) map.invalidateSize();
+      });
+    }
+    const first = viewEls.find((el) => el.dataset.view === view);
+    const behavior = smooth && !reduceMotion ? 'smooth' : 'auto';
+    if (target && target !== first && !(view === 'inicio' && target.id === 'inicio')) {
+      requestAnimationFrame(() => target.scrollIntoView({ behavior, block: 'start' }));
+    } else {
+      window.scrollTo({ top: 0, behavior: changed ? 'auto' : behavior });
+    }
+    if (focus && !pageHero.hidden) $('#pageTitle').focus({ preventScroll: true });
+  }
+
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const hash = a.getAttribute('href');
+    if (hash === '#' || hash === '#main') return;
+    const r = resolve(hash);
+    if (!r) return;
+    e.preventDefault();
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    renderView(r.view, r.target, { focus: r.view !== currentView, smooth: true });
+  });
+  window.addEventListener('popstate', () => {
+    const r = resolve(location.hash) || { view: 'inicio', target: null };
+    renderView(r.view, r.target);
+  });
+  const initial = resolve(location.hash) || { view: 'inicio', target: null };
+  renderView(initial.view, initial.target);
+  // El navegador salta al ancla al terminar de cargar: se corrige la posición.
+  const fixInitialScroll = () => {
+    if (window.__tgsUserScrolled) return;
+    const first = viewEls.find((el) => el.dataset.view === initial.view);
+    if (!initial.target || initial.target === first) window.scrollTo(0, 0);
+    else initial.target.scrollIntoView({ block: 'start' });
+  };
+  ['wheel', 'touchstart', 'keydown'].forEach((ev) => window.addEventListener(ev, () => { window.__tgsUserScrolled = true; }, { once: true, passive: true }));
+  window.addEventListener('load', () => { fixInitialScroll(); setTimeout(fixInitialScroll, 60); setTimeout(fixInitialScroll, 350); });
 
   /* ---------- Efecto de profundidad en las fotos del hero ---------- */
   const visual = $('.hero__visual');

@@ -12,7 +12,7 @@
 | Archivo | Rol |
 |---|---|
 | `js/theme.js` | Se carga en `<head>`: aplica el tema guardado antes de pintar y marca `html.js` |
-| `js/main.js` | Menú, scrollspy, animaciones al hacer scroll, contadores, pestañas, filtro, recorrido de la instalación, mapa, galería, estado de horario, formulario y chispas del hero |
+| `js/main.js` | Vistas por menú (cada opción muestra solo su página, con migas de pan, sub-pestañas y anterior/siguiente; funciona con el botón "atrás" y con enlaces directos como `#galeria`), menú, animaciones al hacer scroll, contadores, pestañas, filtro, recorrido de la instalación, mapa, galería, estado de horario, formulario y chispas del hero |
 | `css/styles.css` | Variables de diseño (`:root` y `[data-theme="dark"]`), componentes y responsive (puntos de corte: 1100, 960, 760, 600, 480 px) |
 | `vendor/leaflet/` | Leaflet 1.9.4 alojado localmente (licencia BSD-2) |
 

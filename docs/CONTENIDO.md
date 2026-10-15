@@ -41,3 +41,7 @@ Las fotos de `public/assets/img/ia/` (portada, tarjetas de servicios y franja fi
 ## Mapa
 
 Las coordenadas corresponden al casco urbano de cada municipio. El Marfil, Puerto Romero y Romerito pertenecen a Puerto Boyacá (así figuran en las resoluciones CREG 043 y 044 de 2021) y se muestran con un solo punto en el casco urbano de ese municipio.
+
+## Páginas (vistas)
+
+Cada `<section>` tiene `data-view="…"`: el menú muestra solo las secciones de esa vista. `inicio` agrupa portada, cifras y tarjetas de acceso; `*` (la franja final) aparece en todas menos en Contacto. Los títulos, descripciones y sub-pestañas de cada vista están en `VIEWS` y `SUBTABS` dentro de `js/main.js`. Para crear una vista nueva: agrega la sección con su `data-view`, una entrada en `VIEWS` y el enlace en el menú.

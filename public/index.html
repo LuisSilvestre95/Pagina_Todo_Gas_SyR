@@ -172,6 +172,7 @@
 
       <nav class="nav" id="nav" aria-label="Navegación principal">
         <ul class="nav__list">
+          <li><a href="#inicio">Inicio</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
@@ -199,8 +200,20 @@
   </header>
 
   <main id="main">
+    <!-- Encabezado de las vistas internas (lo llena js/main.js) -->
+    <div class="page-hero" id="pageHero" hidden>
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--blue" aria-hidden="true"></div>
+      <div class="container page-hero__inner">
+        <nav class="crumbs" aria-label="Ruta de navegación"><a href="#inicio">Inicio</a><span aria-hidden="true">›</span><span id="crumbCurrent" aria-current="page"></span></nav>
+        <h1 class="page-hero__title" id="pageTitle" tabindex="-1"></h1>
+        <p class="page-hero__lead" id="pageLead"></p>
+        <div class="page-hero__tabs" id="pageTabs"></div>
+      </div>
+    </div>
+
     <!-- ============ HERO ============ -->
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <section class="hero" id="inicio" data-view="inicio" aria-labelledby="hero-title">
       <canvas class="hero__embers" id="embers" aria-hidden="true"></canvas>
       <div class="hero__glow hero__glow--blue" aria-hidden="true"></div>
       <div class="hero__glow hero__glow--orange" aria-hidden="true"></div>
@@ -266,7 +279,7 @@
     </section>
 
     <!-- ============ CIFRAS ============ -->
-    <section class="stats" id="cifras" aria-label="Cifras de la empresa">
+    <section class="stats" id="cifras" data-view="inicio" aria-label="Cifras de la empresa">
       <div class="container stats__grid">
         <div class="stat reveal">
           <svg class="i stat__icon"><use href="#i-calendar"/></svg>
@@ -305,8 +318,48 @@
       </div>
     </section>
 
+    <!-- ============ EXPLORAR ============ -->
+    <section class="section explore-section" id="explorar" data-view="inicio" aria-labelledby="explorar-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow reveal">Explora</p>
+          <h2 id="explorar-title" class="h2 reveal" data-delay="1">¿Qué quieres <span class="text-flame">conocer hoy</span>?</h2>
+          <p class="lead reveal" data-delay="2">Cada sección tiene su propia página. Elige una para empezar.</p>
+        </header>
+        <div class="explore">
+          <a class="explore__card reveal explore__card--big" href="#servicios">
+            <picture><source srcset="assets/img/ia/planta-glp.webp" type="image/webp"><img src="assets/img/ia/planta-glp.jpg" data-fallback="assets/img/obra/05-tendido-tuberia.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <span class="explore__body"><small>Servicios</small><strong>Gas natural, GLP, mantenimiento y obra civil</strong><span>Lo que hacemos y cómo lo hacemos, en 5 pasos.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
+          </a>
+          <a class="explore__card reveal" href="#proyectos">
+            <picture><source srcset="assets/img/ia/pueblo-aereo.webp" type="image/webp"><img src="assets/img/ia/pueblo-aereo.jpg" data-fallback="assets/img/obra/09-reposicion.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <span class="explore__body"><small>Proyectos</small><strong>227.224 m de red construida</strong><span>Contratos, línea de tiempo y fotos reales de obra.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
+          </a>
+          <a class="explore__card reveal" href="#instalacion">
+            <picture><source srcset="assets/img/ia/llama-cocina.webp" type="image/webp"><img src="assets/img/ia/llama-cocina.jpg" data-fallback="assets/img/hogar/gasodomestico.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <span class="explore__body"><small>Tu instalación</small><strong>Así llega el gas a tu cocina</strong><span>Esquema interactivo y guía si huele a gas.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
+          </a>
+          <a class="explore__card reveal" href="#nosotros">
+            <picture><source srcset="assets/img/obra/07-cinta-senalizacion.webp" type="image/webp"><img src="assets/img/obra/07-cinta-senalizacion.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <span class="explore__body"><small>Nosotros</small><strong>23 años en Boyacá</strong><span>Misión, visión, valores y ficha empresarial.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
+          </a>
+          <a class="explore__card reveal" href="#cobertura">
+            <picture><source srcset="assets/img/obra/04-senalizacion.webp" type="image/webp"><img src="assets/img/obra/04-senalizacion.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <span class="explore__body"><small>Cobertura</small><strong>4 departamentos, 20+ municipios</strong><span>Mapa interactivo de dónde trabajamos.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
+          </a>
+          <a class="explore__card reveal" href="#hseq">
+            <picture><source srcset="assets/img/ia/prueba-hermeticidad.webp" type="image/webp"><img src="assets/img/ia/prueba-hermeticidad.jpg" data-fallback="assets/img/obra/08-prueba-hermeticidad.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <span class="explore__body"><small>HSEQ</small><strong>Seguridad, salud, ambiente y calidad</strong><span>Nuestro compromiso en cada obra.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
+          </a>
+          <a class="explore__card explore__card--cta reveal" href="#contacto">
+            <span class="explore__body"><small>Contacto</small><strong>Pide tu cotización</strong><span>Formulario en 3 pasos, WhatsApp o llamada. Te respondemos rápido.</span><em>Cotizar ahora <svg class="i"><use href="#i-arrow"/></svg></em></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ NOSOTROS ============ -->
-    <section class="section" id="nosotros" aria-labelledby="nosotros-title">
+    <section class="section" id="nosotros" data-view="nosotros" aria-labelledby="nosotros-title">
       <div class="container">
         <div class="about">
           <div class="about__copy">
@@ -393,7 +446,7 @@
     </section>
 
     <!-- ============ SERVICIOS ============ -->
-    <section class="section section--tint" id="servicios" aria-labelledby="servicios-title">
+    <section class="section section--tint" id="servicios" data-view="servicios" aria-labelledby="servicios-title">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow reveal">02 · Líneas de servicio</p>
@@ -513,7 +566,7 @@
     </section>
 
     <!-- ============ PROCESO ============ -->
-    <section class="section section--dark process-section" id="proceso" aria-labelledby="proceso-title">
+    <section class="section section--dark process-section" id="proceso" data-view="servicios" aria-labelledby="proceso-title">
       <div class="container">
         <header class="section-head section-head--light">
           <p class="eyebrow reveal">03 · Metodología</p>
@@ -614,7 +667,7 @@
     </section>
 
     <!-- ============ PROYECTOS ============ -->
-    <section class="section" id="proyectos" aria-labelledby="proyectos-title">
+    <section class="section" id="proyectos" data-view="proyectos" aria-labelledby="proyectos-title">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow reveal">04 · Experiencia específica</p>
@@ -737,7 +790,7 @@
     </section>
 
     <!-- ============ INSTALACIÓN DOMICILIARIA ============ -->
-    <section class="section section--tint" id="instalacion" aria-labelledby="instalacion-title">
+    <section class="section section--tint" id="instalacion" data-view="instalacion" aria-labelledby="instalacion-title">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow reveal">05 · Instalación domiciliaria</p>
@@ -819,7 +872,7 @@
     </section>
 
     <!-- ============ COBERTURA ============ -->
-    <section class="section" id="cobertura" aria-labelledby="cobertura-title">
+    <section class="section" id="cobertura" data-view="cobertura" aria-labelledby="cobertura-title">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow reveal">06 · Cobertura geográfica</p>
@@ -883,7 +936,7 @@
     </section>
 
     <!-- ============ HSEQ ============ -->
-    <section class="section section--dark hseq-section" id="hseq" aria-labelledby="hseq-title">
+    <section class="section section--dark hseq-section" id="hseq" data-view="hseq" aria-labelledby="hseq-title">
       <div class="container">
         <header class="section-head section-head--light">
           <p class="eyebrow reveal">07 · Sistema HSEQ</p>
@@ -940,7 +993,7 @@
     </section>
 
     <!-- ============ GALERÍA ============ -->
-    <section class="section" id="galeria" aria-labelledby="galeria-title">
+    <section class="section" id="galeria" data-view="proyectos" aria-labelledby="galeria-title">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow reveal">08 · Registro fotográfico</p>
@@ -966,7 +1019,7 @@
     </section>
 
     <!-- ============ SEGURIDAD: ¿HUELE A GAS? ============ -->
-    <section class="section safety-section" id="seguridad" aria-labelledby="seguridad-title">
+    <section class="section safety-section" id="seguridad" data-view="instalacion" aria-labelledby="seguridad-title">
       <div class="container">
         <div class="safety">
           <div class="safety__intro reveal">
@@ -990,55 +1043,8 @@
       </div>
     </section>
 
-    <!-- ============ FAQ ============ -->
-    <section class="section section--tint" id="faq" aria-labelledby="faq-title">
-      <div class="container faq-wrap">
-        <header class="section-head section-head--left">
-          <p class="eyebrow reveal">09 · Preguntas frecuentes</p>
-          <h2 id="faq-title" class="h2 reveal" data-delay="1">Resolvemos tus dudas.</h2>
-          <p class="lead reveal" data-delay="2">¿No encuentras la respuesta? Escríbenos y un técnico te orienta sin compromiso.</p>
-          <a href="https://wa.me/573209485534?text=Hola%20TODO%20GAS%20SYR%2C%20tengo%20una%20pregunta" class="btn btn--wa reveal" data-delay="3" target="_blank" rel="noopener"><svg class="i"><use href="#i-whatsapp"/></svg>Preguntar por WhatsApp</a>
-        </header>
-
-        <div class="faq" id="faqList">
-          <details class="faq__item reveal">
-            <summary>¿Qué diferencia hay entre gas natural y GLP?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>El <strong>gas natural</strong> llega por la red de la empresa distribuidora. El <strong>GLP</strong> (Gas Licuado de Petróleo) se almacena en una planta o en cilindros y se distribuye por red o directamente al usuario. Trabajamos con ambos sistemas, desde la red externa hasta la conexión de tus gasodomésticos.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Qué es una prueba de hermeticidad y por qué es importante?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>Es una prueba de presión que verifica que la instalación no tiene fugas antes de ponerla en servicio. La realizamos con manómetros al terminar cada red o instalación interna, y forma parte de la certificación del trabajo.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿En qué municipios trabajan?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>Tenemos oficinas en <strong>Tunja</strong> y <strong>Garagoa</strong> (Boyacá) y hemos ejecutado obras en más de 20 municipios de Boyacá y Antioquia, además de servicios en Cundinamarca y Bogotá D.C. También desarrollamos proyectos a nivel nacional. Consulta el <a href="#cobertura">mapa de cobertura</a>.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Trabajan como contratistas de empresas distribuidoras de gas?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>Sí. Hemos ejecutado contratos para PUBLISERVICIOS S.A. E.S.P., Enercer S.A. E.S.P., DISTICON S.A.S. E.S.P. y ONENERGY S.A.S., con más de 227.000 metros de red construida. Puedes <a href="docs/Hoja_de_Vida_TODO_GAS_SYR.pdf" download>descargar nuestra hoja de vida empresarial</a> y te enviamos los documentos (RUT, Cámara de Comercio, registro SIC) para tu proceso de contratación.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Instalan y reparan gasodomésticos?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>Sí. Contamos con personal técnico certificado para la instalación de gasodomésticos, la reparación de puntos de gas y el mantenimiento preventivo y correctivo de las instalaciones.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Cómo solicito una cotización?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>Completa el <a href="#contacto">formulario de cotización</a> (toma menos de un minuto), escríbenos por WhatsApp al 320 948 5534 o al 322 361 8360, o envíanos un correo a todogassyr@hotmail.com. Te respondemos en horario de atención.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Qué pasa con el andén o la vía después de la obra?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>La reposición es parte de nuestro trabajo: compactamos, reponemos el concreto de andenes y vías y hacemos control de calidad con toma de cilindros y ensayos de resistencia, además de verificar cotas y compactación en cada tramo.</p>
-          </details>
-          <details class="faq__item reveal">
-            <summary>¿Cuál es el horario de atención?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>Lunes a viernes de 8:00 a.m. a 6:00 p.m. y sábados de 9:00 a.m. a 1:00 p.m. Ante una fuga de gas, sigue la <a href="#seguridad">guía de emergencia</a> y llama al 123.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ CONTACTO ============ -->
-    <section class="section contact-section" id="contacto" aria-labelledby="contacto-title">
+    <section class="section contact-section" id="contacto" data-view="contacto" aria-labelledby="contacto-title">
       <div class="container contact">
         <div class="contact__info">
           <p class="eyebrow reveal">10 · Contacto</p>
@@ -1182,8 +1188,57 @@
       </div>
     </section>
 
+    <!-- ============ FAQ ============ -->
+    <section class="section section--tint" id="faq" data-view="contacto" aria-labelledby="faq-title">
+      <div class="container faq-wrap">
+        <header class="section-head section-head--left">
+          <p class="eyebrow reveal">09 · Preguntas frecuentes</p>
+          <h2 id="faq-title" class="h2 reveal" data-delay="1">Resolvemos tus dudas.</h2>
+          <p class="lead reveal" data-delay="2">¿No encuentras la respuesta? Escríbenos y un técnico te orienta sin compromiso.</p>
+          <a href="https://wa.me/573209485534?text=Hola%20TODO%20GAS%20SYR%2C%20tengo%20una%20pregunta" class="btn btn--wa reveal" data-delay="3" target="_blank" rel="noopener"><svg class="i"><use href="#i-whatsapp"/></svg>Preguntar por WhatsApp</a>
+        </header>
+
+        <div class="faq" id="faqList">
+          <details class="faq__item reveal">
+            <summary>¿Qué diferencia hay entre gas natural y GLP?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>El <strong>gas natural</strong> llega por la red de la empresa distribuidora. El <strong>GLP</strong> (Gas Licuado de Petróleo) se almacena en una planta o en cilindros y se distribuye por red o directamente al usuario. Trabajamos con ambos sistemas, desde la red externa hasta la conexión de tus gasodomésticos.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>¿Qué es una prueba de hermeticidad y por qué es importante?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>Es una prueba de presión que verifica que la instalación no tiene fugas antes de ponerla en servicio. La realizamos con manómetros al terminar cada red o instalación interna, y forma parte de la certificación del trabajo.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>¿En qué municipios trabajan?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>Tenemos oficinas en <strong>Tunja</strong> y <strong>Garagoa</strong> (Boyacá) y hemos ejecutado obras en más de 20 municipios de Boyacá y Antioquia, además de servicios en Cundinamarca y Bogotá D.C. También desarrollamos proyectos a nivel nacional. Consulta el <a href="#cobertura">mapa de cobertura</a>.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>¿Trabajan como contratistas de empresas distribuidoras de gas?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>Sí. Hemos ejecutado contratos para PUBLISERVICIOS S.A. E.S.P., Enercer S.A. E.S.P., DISTICON S.A.S. E.S.P. y ONENERGY S.A.S., con más de 227.000 metros de red construida. Puedes <a href="docs/Hoja_de_Vida_TODO_GAS_SYR.pdf" download>descargar nuestra hoja de vida empresarial</a> y te enviamos los documentos (RUT, Cámara de Comercio, registro SIC) para tu proceso de contratación.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>¿Instalan y reparan gasodomésticos?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>Sí. Contamos con personal técnico certificado para la instalación de gasodomésticos, la reparación de puntos de gas y el mantenimiento preventivo y correctivo de las instalaciones.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>¿Cómo solicito una cotización?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>Completa el <a href="#contacto">formulario de cotización</a> (toma menos de un minuto), escríbenos por WhatsApp al 320 948 5534 o al 322 361 8360, o envíanos un correo a todogassyr@hotmail.com. Te respondemos en horario de atención.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>¿Qué pasa con el andén o la vía después de la obra?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>La reposición es parte de nuestro trabajo: compactamos, reponemos el concreto de andenes y vías y hacemos control de calidad con toma de cilindros y ensayos de resistencia, además de verificar cotas y compactación en cada tramo.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>¿Cuál es el horario de atención?<svg class="i"><use href="#i-chev-down"/></svg></summary>
+            <p>Lunes a viernes de 8:00 a.m. a 6:00 p.m. y sábados de 9:00 a.m. a 1:00 p.m. Ante una fuga de gas, sigue la <a href="#seguridad">guía de emergencia</a> y llama al 123.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <nav class="pager container" id="pager" aria-label="Páginas anterior y siguiente" hidden></nav>
+
     <!-- ============ CTA FINAL ============ -->
-    <section class="cta cta--photo" aria-labelledby="cta-title">
+    <section class="cta cta--photo" aria-labelledby="cta-title" data-view="*">
       <div class="container cta__inner">
         <img src="assets/img/llama.webp" alt="" width="70" height="98" class="cta__flame">
         <div>
@@ -1261,7 +1316,7 @@
     </button>
   </div>
 
-  <a href="#inicio" class="to-top" id="toTop" aria-label="Volver arriba">
+  <a href="#" class="to-top" id="toTop" aria-label="Volver arriba">
     <svg viewBox="0 0 40 40" class="to-top__ring" aria-hidden="true"><circle cx="20" cy="20" r="18"/><circle cx="20" cy="20" r="18" id="toTopRing"/></svg>
     <svg class="i to-top__arrow"><use href="#i-chev-down"/></svg>
   </a>
