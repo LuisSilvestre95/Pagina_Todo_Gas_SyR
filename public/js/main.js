@@ -313,7 +313,7 @@
       const marker = L.marker(latlng, { icon, title: name, keyboard: true, zIndexOffset: isHq ? 1000 : 0 })
         .addTo(map)
         .bindPopup(`<strong>${name}</strong><br>${dept}${extra ? ` · ${extra}` : ''}${btn.dataset.note ? `<br><small>${btn.dataset.note}. Ubicación de referencia del municipio.</small>` : ''}`);
-      marker.bindTooltip(name, { direction: 'top', offset: [0, -10] });
+      marker.bindTooltip(isHq ? `${name} · ${extra}` : name, { direction: isHq && name.startsWith('Garagoa') ? 'bottom' : 'top', offset: [0, isHq ? 12 : -10], permanent: isHq, className: isHq ? 'map-label' : '' });
       markers.set(btn, marker);
       bounds.push(latlng);
       if (hqLatLng && !isHq) {
@@ -666,7 +666,7 @@
     { id: 'inicio', name: 'Inicio' },
     { id: 'nosotros', name: 'Nosotros', title: 'Quiénes somos', lead: 'Empresa boyacense con 23 años en redes de gas natural y GLP.' },
     { id: 'servicios', name: 'Servicios', title: 'Servicios y metodología', lead: 'Redes de gas natural, sistemas de GLP, mantenimiento y obra civil, con un proceso técnico de 5 pasos.' },
-    { id: 'proyectos', name: 'Proyectos', title: 'Proyectos y registro de obra', lead: 'Contratos ejecutados, metros construidos y fotografías reales de nuestros frentes de obra.' },
+    { id: 'proyectos', name: 'Proyectos', title: 'Proyectos y registro de obra', lead: 'Contratos ejecutados, metros construidos y el paso a paso de nuestras obras.' },
     { id: 'instalacion', name: 'Tu instalación', title: 'Tu instalación de gas', lead: 'Cómo llega el gas hasta tu cocina y qué hacer si huele a gas.' },
     { id: 'cobertura', name: 'Cobertura', title: 'Cobertura geográfica', lead: 'Boyacá, Cundinamarca, Bogotá D.C., Antioquia y proyectos a nivel nacional.' },
     { id: 'hseq', name: 'HSEQ', title: 'Sistema HSEQ', lead: 'Salud, seguridad, medio ambiente y calidad en cada obra.' },
@@ -674,7 +674,7 @@
   ];
   const SUBTABS = {
     servicios: [['servicios', 'Líneas de servicio'], ['proceso', 'Metodología'], ['zanja', 'Anatomía de una zanja']],
-    proyectos: [['proyectos', 'Experiencia'], ['galeria', 'Registro fotográfico']],
+    proyectos: [['proyectos', 'Experiencia'], ['galeria', 'Así trabajamos']],
     instalacion: [['instalacion', 'Instalación domiciliaria'], ['seguridad', '¿Huele a gas?']],
     contacto: [['contacto', 'Formulario y datos'], ['faq', 'Preguntas frecuentes']],
   };
