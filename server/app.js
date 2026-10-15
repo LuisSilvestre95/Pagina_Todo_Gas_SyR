@@ -15,7 +15,7 @@ const CSP = [
   "script-src 'self'",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
-  "img-src 'self' data: https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org",
+  "img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org",
   'frame-src https://www.google.com https://maps.google.com',
   "connect-src 'self'",
   "base-uri 'self'",

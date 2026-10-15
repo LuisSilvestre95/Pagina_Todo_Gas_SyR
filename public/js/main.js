@@ -19,8 +19,6 @@
     'gas-natural': 'Redes de gas natural',
     glp: 'Sistemas de GLP',
     mantenimiento: 'Mantenimiento / reparación',
-    'obra-civil': 'Obra civil',
-    'revision-certificacion': 'Revisión / pruebas de hermeticidad',
     otro: 'Otro',
   };
 
@@ -199,20 +197,20 @@
   const journey = $('#journey');
   if (journey) {
     const STEPS = {
-      1: { title: 'Red de distribución', img: 'assets/img/obra/05-tendido-tuberia', alt: 'Tendido de tubería de polietileno en la zanja',
+      1: { title: 'Red de distribución', img: 'assets/img/ia/hero-obra', alt: 'Tendido de tubería de polietileno en la zanja',
         text: 'La tubería de polietileno recorre calles y andenes. En GLP inicia en la planta de almacenamiento; en gas natural, en la red de la distribuidora. Va enterrada, señalizada y protegida.' },
-      2: { title: 'Acometida', img: 'assets/img/hogar/proteccion-tuberia', alt: 'Técnicos protegiendo la tubería de gas en obra',
+      2: { title: 'Acometida', img: 'assets/img/ia/excavacion', alt: 'Excavación de la zanja para la acometida',
         text: 'Es el tramo que conecta la red de la calle con tu predio. Se construye con uniones por termofusión, cinta de señalización y protección mecánica de la tubería.' },
-      3: { title: 'Centro de medición', img: 'assets/img/hogar/centro-medicion', alt: 'Centro de medición con regulador y medidor de gas',
+      3: { title: 'Centro de medición', img: 'assets/img/ia/prueba-hermeticidad', alt: 'Centro de medición con regulador y medidor de gas',
         text: 'Aquí van el regulador y el medidor: controlan la presión del gas y registran tu consumo. Incluye la válvula de corte que permite cerrar el servicio en una emergencia.' },
-      4: { title: 'Red interna', img: 'assets/img/hogar/red-interna', alt: 'Tubería interna con válvulas de paso',
+      4: { title: 'Red interna', img: 'assets/img/ia/termofusion', alt: 'Unión hermética de tubería de polietileno',
         text: 'La tubería lleva el gas dentro de la vivienda hasta cada punto de conexión, con llaves de paso individuales. Se somete a prueba de hermeticidad antes de la puesta en servicio.' },
-      5: { title: 'Gasodomésticos', img: 'assets/img/hogar/gasodomestico', alt: 'Estufa a gas encendida',
+      5: { title: 'Gasodomésticos', img: 'assets/img/ia/llama-cocina', alt: 'Estufa a gas encendida con llama azul',
         text: 'Estufa, calentador y demás equipos se conectan con personal técnico certificado. Con la instalación aprobada, el gas queda listo para usar de forma segura.' },
     };
     const STEP1 = {
       gn: STEPS[1],
-      glp: { title: 'Planta y red de distribución de GLP', img: 'assets/img/obra/05-tendido-tuberia', alt: 'Tendido de tubería de polietileno en la zanja',
+      glp: { title: 'Planta y red de distribución de GLP', img: 'assets/img/ia/planta-glp', alt: 'Tendido de tubería de polietileno en la zanja',
         text: 'El GLP se almacena en tanques estacionarios en una planta y desde allí viaja por la red de polietileno enterrada bajo calles y andenes hasta cada predio. Así lo hicimos en Chivor, Pisba y municipios de Antioquia.' },
     };
     let sistema = 'gn';
@@ -289,13 +287,16 @@
     mapEl.innerHTML = '';
     map = L.map(mapEl, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
 
-    const tileUrl = (theme) => `https://{s}.basemaps.cartocdn.com/${theme === 'dark' ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png`;
-    let tiles = L.tileLayer(tileUrl(currentTheme()), {
+    // Mosaicos de OpenStreetMap (sin clave). Los colores se armonizan con CSS según el tema.
+    let loaded = 0;
+    let failed = 0;
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
-      subdomains: 'abcd',
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    }).addTo(map);
-    themeListeners.push((t) => tiles.setUrl(tileUrl(t)));
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    })
+      .on('tileload', () => { loaded += 1; mapEl.classList.remove('map--notiles'); })
+      .on('tileerror', () => { failed += 1; if (!loaded && failed > 3) mapEl.classList.add('map--notiles'); })
+      .addTo(map);
 
     const hq = townBtns.find((b) => b.textContent.trim().startsWith('Tunja'));
     const hqLatLng = hq ? [Number(hq.dataset.lat), Number(hq.dataset.lng)] : null;

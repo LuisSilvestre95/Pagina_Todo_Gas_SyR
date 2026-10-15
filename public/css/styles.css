@@ -1755,3 +1755,91 @@ body[data-view="contacto"] .pager { padding-bottom: var(--section-y); }
 .explore__body strong { color: #fff; }
 .explore__card--cta { grid-column: span 3; }
 @media (max-width: 1000px) { .explore__card--cta { grid-column: auto; } }
+
+/* =========================================================================
+   27. Ajuste fino: tipografía fluida, pantallas grandes y armonía de color
+   ========================================================================= */
+:root {
+  --container: 1240px;
+  --flame-text: linear-gradient(100deg, #f26b1d 0%, #fb8a24 45%, #fdb022 100%);
+}
+@media (min-width: 1600px) { :root { --container: 1360px; } }
+@media (min-width: 1920px) { :root { --container: 1480px; } }
+
+/* Escala tipográfica fluida: crece con la pantalla, pero con topes moderados */
+.hero__title { font-size: clamp(2.1rem, 1.25rem + 3vw, 3.9rem); line-height: 1.06; }
+.hero__lead { font-size: clamp(1rem, .95rem + .3vw, 1.2rem); }
+.h2 { font-size: clamp(1.7rem, 1.15rem + 1.6vw, 2.7rem); line-height: 1.15; }
+.h3 { font-size: clamp(1.15rem, 1.05rem + .45vw, 1.4rem); }
+.lead { font-size: clamp(1rem, .96rem + .22vw, 1.14rem); }
+.page-hero__title { font-size: clamp(1.9rem, 1.2rem + 2.2vw, 3.1rem); }
+.stat__num { font-size: clamp(2.1rem, 1.55rem + 1.9vw, 3.1rem); }
+.service h3 { font-size: clamp(1.1rem, 1rem + .35vw, 1.25rem); }
+.project h3, .journey__card h3 { font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem); }
+.process__step h3 { font-size: 1.05rem; }
+.cta h2 { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); }
+.notfound h1 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.2rem); }
+
+/* Títulos equilibrados: sin palabras sueltas ni cortes raros */
+h1, h2, h3, h4, .page-hero__title, .explore__body strong { text-wrap: balance; overflow-wrap: break-word; hyphens: manual; }
+p, li, dd, .lead { text-wrap: pretty; overflow-wrap: break-word; }
+
+/* Rejillas que se adaptan al ancho disponible en vez de apretar columnas */
+.services { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.values__grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.hseq { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+@media (max-width: 1180px) and (min-width: 961px) {
+  .process { grid-template-columns: repeat(3, 1fr); row-gap: 34px; }
+  .process::before { display: none; }
+}
+
+/* Color: degradado de texto cálido (sin tonos grises intermedios) */
+.text-flame { background: var(--flame-text); -webkit-background-clip: text; background-clip: text; }
+
+/* Guía de emergencia en la misma familia de azules de la marca */
+.safety-section { background: radial-gradient(90% 80% at 0% 0%, #1a3d5e 0%, var(--navy-900) 55%, var(--navy-950) 100%); }
+.safety-section::before { background: repeating-linear-gradient(-45deg, rgba(253, 176, 34, .035) 0 22px, transparent 22px 44px); }
+.safety p { color: #c8d6e4; }
+.safety__steps li { background: rgba(255, 255, 255, .05); }
+.safety__icon { color: var(--navy-900); }
+.safety__icon::after { color: var(--navy-900); }
+
+/* HSEQ: tarjetas sobrias con acento de color arriba */
+.hseq__tile { background: rgba(255, 255, 255, .045); border-top: 3px solid var(--c); min-height: 0; }
+.hseq__tile:hover { background: rgba(255, 255, 255, .07); }
+.hseq__letter { opacity: .09; font-size: 9rem; bottom: -30px; }
+.hseq__tile:hover .hseq__letter { opacity: .18; }
+
+/* Control de calidad con ícono en lugar de foto de baja resolución */
+.quality { grid-template-columns: auto 1fr; }
+.quality__icon { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 20px; background: var(--flame-warm); color: #fff; }
+.quality__icon .i { width: 34px; height: 34px; }
+@media (max-width: 640px) { .quality { grid-template-columns: 1fr; } }
+
+/* Formulario: 3 servicios */
+.choices--3 { grid-template-columns: repeat(3, 1fr); }
+.choices--3 .choice span { flex-direction: column; justify-content: center; text-align: center; min-height: 104px; gap: 10px; }
+@media (max-width: 560px) {
+  .choices--3 { grid-template-columns: 1fr; }
+  .choices--3 .choice span { flex-direction: row; justify-content: flex-start; text-align: left; min-height: 60px; }
+}
+
+/* Galería */
+.gallery__note { display: inline-flex; align-items: flex-start; gap: 8px; margin-top: 14px; font-size: .88rem; color: var(--muted); text-align: left; }
+.gallery__note .i { color: var(--orange-500); margin-top: 2px; }
+.gallery__note a { color: var(--orange-500); font-weight: 600; text-decoration: underline; }
+@media (min-width: 1600px) { .gallery { grid-auto-rows: 250px; } }
+.lightbox img { min-width: 0; width: auto; max-width: min(1200px, 92vw); }
+
+/* Mapa con mosaicos de OpenStreetMap armonizados con la marca */
+.coverage__map .leaflet-tile-pane { filter: saturate(.45) brightness(1.04) contrast(.92) sepia(.08); }
+:root[data-theme="dark"] .coverage__map .leaflet-tile-pane { filter: invert(1) hue-rotate(190deg) brightness(.82) contrast(.9) saturate(.35); }
+.coverage__map.map--notiles .leaflet-tile-pane { display: none; }
+.coverage__map.map--notiles .leaflet-container,
+.coverage__map.map--notiles {
+  background:
+    radial-gradient(60% 60% at 60% 55%, color-mix(in srgb, var(--blue-500) 12%, transparent), transparent 70%),
+    linear-gradient(var(--border) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, var(--border) 1px, transparent 1px) 0 0 / 40px 40px,
+    var(--surface-2);
+}

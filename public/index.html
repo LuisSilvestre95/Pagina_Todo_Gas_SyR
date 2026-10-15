@@ -250,8 +250,8 @@
           </figure>
           <figure class="hero__photo hero__photo--a tilt">
             <picture>
-              <source srcset="assets/img/obra/08-prueba-hermeticidad.webp" type="image/webp">
-              <img src="assets/img/obra/08-prueba-hermeticidad.jpg" alt="Técnico realizando una prueba de hermeticidad con manómetro" width="437" height="291">
+              <source srcset="assets/img/ia/prueba-hermeticidad.webp" type="image/webp">
+              <img src="assets/img/ia/prueba-hermeticidad.jpg" data-fallback="assets/img/obra/08-prueba-hermeticidad.jpg" alt="Técnico leyendo el manómetro en una prueba de hermeticidad (imagen ilustrativa)" width="1376" height="768">
             </picture>
           </figure>
           <figure class="hero__photo hero__photo--b tilt">
@@ -340,11 +340,11 @@
             <span class="explore__body"><small>Tu instalación</small><strong>Así llega el gas a tu cocina</strong><span>Esquema interactivo y guía si huele a gas.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
           </a>
           <a class="explore__card reveal" href="#nosotros">
-            <picture><source srcset="assets/img/obra/07-cinta-senalizacion.webp" type="image/webp"><img src="assets/img/obra/07-cinta-senalizacion.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <picture><source srcset="assets/img/ia/excavacion.webp" type="image/webp"><img src="assets/img/ia/excavacion.jpg" data-fallback="assets/img/obra/07-cinta-senalizacion.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
             <span class="explore__body"><small>Nosotros</small><strong>23 años en Boyacá</strong><span>Misión, visión, valores y ficha empresarial.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
           </a>
           <a class="explore__card reveal" href="#cobertura">
-            <picture><source srcset="assets/img/obra/04-senalizacion.webp" type="image/webp"><img src="assets/img/obra/04-senalizacion.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
+            <picture><source srcset="assets/img/ia/senalizacion.webp" type="image/webp"><img src="assets/img/ia/senalizacion.jpg" data-fallback="assets/img/obra/04-senalizacion.jpg" alt="" loading="lazy" width="1376" height="768"></picture>
             <span class="explore__body"><small>Cobertura</small><strong>4 departamentos, 20+ municipios</strong><span>Mapa interactivo de dónde trabajamos.</span><em>Ver más <svg class="i"><use href="#i-arrow"/></svg></em></span>
           </a>
           <a class="explore__card reveal" href="#hseq">
@@ -504,7 +504,7 @@
           </article>
 
           <article class="service service--amber reveal" data-delay="3">
-            <figure class="service__media"><picture><source srcset="assets/img/obra/01-corte-concreto.webp" type="image/webp"><img src="assets/img/obra/01-corte-concreto.jpg" alt="Corte de concreto en un andén durante una obra de TODO GAS SYR" loading="lazy" width="1376" height="768"></picture><span class="service__badge service__badge--real">Foto real de obra</span></figure>
+            <figure class="service__media"><picture><source srcset="assets/img/ia/corte-concreto.webp" type="image/webp"><img src="assets/img/ia/corte-concreto.jpg" data-fallback="assets/img/obra/01-corte-concreto.jpg" alt="Corte de concreto en un andén con cortadora" loading="lazy" width="1376" height="768"></picture><span class="service__badge">Imagen ilustrativa</span></figure>
             <div class="service__top">
               <span class="service__icon"><svg class="i"><use href="#i-hardhat"/></svg></span>
               <span class="service__num">04</span>
@@ -516,7 +516,7 @@
               <li>Excavación, compactación y canalizaciones</li>
               <li>Señalización y protección de redes existentes</li>
             </ul>
-            <a href="#contacto" class="service__link" data-servicio="obra-civil">Cotizar este servicio<svg class="i"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/573209485534?text=Hola%20TODO%20GAS%20SYR%2C%20quiero%20consultar%20sobre%20obra%20civil." class="service__link" target="_blank" rel="noopener">Consultar por WhatsApp<svg class="i"><use href="#i-arrow"/></svg></a>
           </article>
         </div>
 
@@ -654,10 +654,7 @@
         </div>
 
         <div class="quality reveal">
-          <picture>
-            <source srcset="assets/img/obra/control-calidad.webp" type="image/webp">
-            <img src="assets/img/obra/control-calidad.jpg" alt="Toma de cilindros de concreto para ensayos de resistencia" width="234" height="156" loading="lazy">
-          </picture>
+          <span class="quality__icon" aria-hidden="true"><svg class="i"><use href="#i-award"/></svg></span>
           <div>
             <p class="quality__kicker"><svg class="i"><use href="#i-award"/></svg>Control de calidad</p>
             <p>Toma de cilindros y ensayos de resistencia del concreto de reposición, protección de alcantarillados y verificación de cotas y compactación en <strong>cada tramo intervenido</strong>.</p>
@@ -857,7 +854,7 @@
               <li><button type="button" data-step="5"><span>5</span>Gasodomésticos</button></li>
             </ol>
             <div class="journey__card" aria-live="polite">
-              <figure class="journey__photo"><img id="journeyImg" src="assets/img/obra/05-tendido-tuberia.jpg" alt="Tendido de tubería de polietileno en la zanja" width="437" height="291" loading="lazy"></figure>
+              <figure class="journey__photo"><img id="journeyImg" src="assets/img/ia/hero-obra.jpg" alt="Tendido de tubería de polietileno en la zanja" width="1376" height="768" loading="lazy"></figure>
               <h3 id="journeyTitle">Red de distribución</h3>
               <p id="journeyText">La tubería de polietileno recorre calles y andenes. En GLP inicia en la planta de almacenamiento; en gas natural, en la red de la distribuidora. Va enterrada, señalizada y protegida.</p>
               <div class="journey__nav">
@@ -996,24 +993,23 @@
     <section class="section" id="galeria" data-view="proyectos" aria-labelledby="galeria-title">
       <div class="container">
         <header class="section-head">
-          <p class="eyebrow reveal">08 · Registro fotográfico</p>
+          <p class="eyebrow reveal">08 · Así trabajamos</p>
           <h2 id="galeria-title" class="h2 reveal" data-delay="1">Nuestro trabajo, <span class="text-flame">paso a paso</span>.</h2>
-          <p class="lead reveal" data-delay="2">Fotografías reales de nuestros frentes de obra. Toca cualquier imagen para verla en grande.</p>
+          <p class="lead reveal" data-delay="2">Cada etapa de una obra de red de gas, de principio a fin. Toca cualquier imagen para verla en grande.</p>
+          <p class="gallery__note reveal" data-delay="3"><svg class="i"><use href="#i-file"/></svg>Imágenes ilustrativas en alta resolución. El registro fotográfico original de nuestras obras está en la <a href="docs/Hoja_de_Vida_TODO_GAS_SYR.pdf" download>hoja de vida empresarial (PDF)</a>.</p>
         </header>
 
         <div class="gallery" id="gallery">
-          <button class="gallery__item gallery__item--wide reveal" data-full="assets/img/obra/01-corte-concreto.jpg"><picture><source srcset="assets/img/obra/01-corte-concreto.webp" type="image/webp"><img src="assets/img/obra/01-corte-concreto.jpg" alt="Corte de concreto en el andén" loading="lazy" width="437" height="291"></picture><span class="gallery__cap"><b>01</b>Corte de concreto</span></button>
-          <button class="gallery__item reveal" data-delay="1" data-full="assets/img/obra/02-rotura-concreto.jpg"><picture><source srcset="assets/img/obra/02-rotura-concreto.webp" type="image/webp"><img src="assets/img/obra/02-rotura-concreto.jpg" alt="Rotura de concreto con martillo neumático" loading="lazy" width="437" height="291"></picture><span class="gallery__cap"><b>02</b>Rotura de concreto</span></button>
-          <button class="gallery__item reveal" data-delay="2" data-full="assets/img/obra/03-excavacion.jpg"><picture><source srcset="assets/img/obra/03-excavacion.webp" type="image/webp"><img src="assets/img/obra/03-excavacion.jpg" alt="Excavación de zanja a lo largo de la vía" loading="lazy" width="437" height="291"></picture><span class="gallery__cap"><b>03</b>Excavación</span></button>
-          <button class="gallery__item reveal" data-full="assets/img/obra/04-senalizacion.jpg"><picture><source srcset="assets/img/obra/04-senalizacion.webp" type="image/webp"><img src="assets/img/obra/04-senalizacion.jpg" alt="Señalización de obra con cinta de seguridad" loading="lazy" width="437" height="291"></picture><span class="gallery__cap"><b>04</b>Señalización de obra</span></button>
-          <button class="gallery__item gallery__item--tall reveal" data-delay="1" data-full="assets/img/obra/05-tendido-tuberia.jpg"><picture><source srcset="assets/img/obra/05-tendido-tuberia.webp" type="image/webp"><img src="assets/img/obra/05-tendido-tuberia.jpg" alt="Tendido de tubería amarilla de polietileno" loading="lazy" width="492" height="328"></picture><span class="gallery__cap"><b>05</b>Tendido de tubería</span></button>
-          <button class="gallery__item reveal" data-delay="2" data-full="assets/img/obra/06-termofusion.jpg"><picture><source srcset="assets/img/obra/06-termofusion.webp" type="image/webp"><img src="assets/img/obra/06-termofusion.jpg" alt="Uniones por termofusión en tubería de polietileno" loading="lazy" width="238" height="159"></picture><span class="gallery__cap"><b>06</b>Termofusión de uniones</span></button>
-          <button class="gallery__item reveal" data-full="assets/img/obra/07-cinta-senalizacion.jpg"><picture><source srcset="assets/img/obra/07-cinta-senalizacion.webp" type="image/webp"><img src="assets/img/obra/07-cinta-senalizacion.jpg" alt="Instalación de cinta de señalización sobre la tubería" loading="lazy" width="437" height="291"></picture><span class="gallery__cap"><b>07</b>Cinta de señalización</span></button>
-          <button class="gallery__item reveal" data-delay="1" data-full="assets/img/obra/08-prueba-hermeticidad.jpg"><picture><source srcset="assets/img/obra/08-prueba-hermeticidad.webp" type="image/webp"><img src="assets/img/obra/08-prueba-hermeticidad.jpg" alt="Prueba de hermeticidad con manómetro" loading="lazy" width="280" height="187"></picture><span class="gallery__cap"><b>08</b>Prueba de hermeticidad</span></button>
-          <button class="gallery__item gallery__item--wide reveal" data-delay="2" data-full="assets/img/obra/09-reposicion.jpg"><picture><source srcset="assets/img/obra/09-reposicion.webp" type="image/webp"><img src="assets/img/obra/09-reposicion.jpg" alt="Reposición de canalización y andén" loading="lazy" width="240" height="160"></picture><span class="gallery__cap"><b>09</b>Reposición de canalización</span></button>
-          <button class="gallery__item gallery__item--wide reveal" data-full="assets/img/hogar/centro-medicion.jpg"><picture><source srcset="assets/img/hogar/centro-medicion.webp" type="image/webp"><img src="assets/img/hogar/centro-medicion.jpg" alt="Centro de medición con medidor y regulador" loading="lazy" width="214" height="143"></picture><span class="gallery__cap"><b>10</b>Centro de medición</span></button>
-          <button class="gallery__item reveal" data-delay="1" data-full="assets/img/hogar/red-interna.jpg"><picture><source srcset="assets/img/hogar/red-interna.webp" type="image/webp"><img src="assets/img/hogar/red-interna.jpg" alt="Red interna con válvulas de paso" loading="lazy" width="192" height="128"></picture><span class="gallery__cap"><b>11</b>Red interna</span></button>
-          <button class="gallery__item reveal" data-delay="2" data-full="assets/img/hogar/gasodomestico.jpg"><picture><source srcset="assets/img/hogar/gasodomestico.webp" type="image/webp"><img src="assets/img/hogar/gasodomestico.jpg" alt="Estufa a gas en funcionamiento" loading="lazy" width="196" height="131"></picture><span class="gallery__cap"><b>12</b>Gasodoméstico en servicio</span></button>
+          <button class="gallery__item gallery__item--wide reveal" data-full="assets/img/ia/corte-concreto.jpg"><picture><source srcset="assets/img/ia/corte-concreto.webp" type="image/webp"><img src="assets/img/ia/corte-concreto.jpg" data-fallback="assets/img/obra/01-corte-concreto.jpg" alt="Corte de concreto del andén con cortadora" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>01</b>Corte de concreto</span></button>
+          <button class="gallery__item reveal" data-full="assets/img/ia/rotura-concreto.jpg"><picture><source srcset="assets/img/ia/rotura-concreto.webp" type="image/webp"><img src="assets/img/ia/rotura-concreto.jpg" data-fallback="assets/img/obra/02-rotura-concreto.jpg" alt="Rotura de concreto con martillo neumático" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>02</b>Rotura de concreto</span></button>
+          <button class="gallery__item reveal" data-full="assets/img/ia/excavacion.jpg"><picture><source srcset="assets/img/ia/excavacion.webp" type="image/webp"><img src="assets/img/ia/excavacion.jpg" data-fallback="assets/img/obra/03-excavacion.jpg" alt="Excavación manual de la zanja" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>03</b>Excavación</span></button>
+          <button class="gallery__item reveal" data-full="assets/img/ia/senalizacion.jpg"><picture><source srcset="assets/img/ia/senalizacion.webp" type="image/webp"><img src="assets/img/ia/senalizacion.jpg" data-fallback="assets/img/obra/04-senalizacion.jpg" alt="Obra señalizada con conos y cinta de seguridad" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>04</b>Señalización de obra</span></button>
+          <button class="gallery__item gallery__item--tall reveal" data-full="assets/img/ia/hero-obra.jpg"><picture><source srcset="assets/img/ia/hero-obra.webp" type="image/webp"><img src="assets/img/ia/hero-obra.jpg" data-fallback="assets/img/obra/05-tendido-tuberia.jpg" alt="Tendido de tubería amarilla de polietileno en la zanja" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>05</b>Tendido de tubería</span></button>
+          <button class="gallery__item gallery__item--wide reveal" data-full="assets/img/ia/termofusion.jpg"><picture><source srcset="assets/img/ia/termofusion.webp" type="image/webp"><img src="assets/img/ia/termofusion.jpg" data-fallback="assets/img/obra/06-termofusion.jpg" alt="Unión de tubería de polietileno por termofusión" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>06</b>Termofusión de uniones</span></button>
+          <button class="gallery__item reveal" data-full="assets/img/ia/prueba-hermeticidad.jpg"><picture><source srcset="assets/img/ia/prueba-hermeticidad.webp" type="image/webp"><img src="assets/img/ia/prueba-hermeticidad.jpg" data-fallback="assets/img/obra/08-prueba-hermeticidad.jpg" alt="Técnico leyendo el manómetro en la prueba de hermeticidad" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>07</b>Prueba de hermeticidad</span></button>
+          <button class="gallery__item gallery__item--wide reveal" data-full="assets/img/ia/planta-glp.jpg"><picture><source srcset="assets/img/ia/planta-glp.webp" type="image/webp"><img src="assets/img/ia/planta-glp.jpg" data-fallback="assets/img/obra/09-reposicion.jpg" alt="Planta de almacenamiento de GLP con tanques estacionarios" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>08</b>Planta de GLP</span></button>
+          <button class="gallery__item gallery__item--wide reveal" data-full="assets/img/ia/llama-cocina.jpg"><picture><source srcset="assets/img/ia/llama-cocina.webp" type="image/webp"><img src="assets/img/ia/llama-cocina.jpg" data-fallback="assets/img/hogar/gasodomestico.jpg" alt="Estufa a gas encendida con llama azul" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>09</b>Gasodoméstico en servicio</span></button>
+          <button class="gallery__item gallery__item--wide reveal" data-full="assets/img/ia/pueblo-aereo.jpg"><picture><source srcset="assets/img/ia/pueblo-aereo.webp" type="image/webp"><img src="assets/img/ia/pueblo-aereo.jpg" data-fallback="assets/img/obra/09-reposicion.jpg" alt="Vista aérea de un pueblo de Boyacá con obra de red de gas" loading="lazy" width="1376" height="768"></picture><span class="gallery__cap"><b>10</b>Pueblos conectados</span></button>
         </div>
       </div>
     </section>
@@ -1112,13 +1108,10 @@
             <!-- Paso 2 -->
             <fieldset class="quote__step" data-step="2">
               <legend>¿Qué necesitas?</legend>
-              <div class="choices">
+              <div class="choices choices--3">
                 <label class="choice"><input type="radio" name="servicio" value="gas-natural" required><span><svg class="i"><use href="#i-droplet"/></svg>Redes de gas natural</span></label>
-                <label class="choice"><input type="radio" name="servicio" value="glp"><span><svg class="i"><use href="#i-tank"/></svg>Sistemas de GLP</span></label>
                 <label class="choice"><input type="radio" name="servicio" value="mantenimiento"><span><svg class="i"><use href="#i-wrench"/></svg>Mantenimiento / reparación</span></label>
-                <label class="choice"><input type="radio" name="servicio" value="obra-civil"><span><svg class="i"><use href="#i-hardhat"/></svg>Obra civil</span></label>
-                <label class="choice"><input type="radio" name="servicio" value="revision-certificacion"><span><svg class="i"><use href="#i-gauge"/></svg>Revisión / hermeticidad</span></label>
-                <label class="choice"><input type="radio" name="servicio" value="otro"><span><svg class="i"><use href="#i-bulb"/></svg>Otro</span></label>
+                <label class="choice"><input type="radio" name="servicio" value="glp"><span><svg class="i"><use href="#i-tank"/></svg>Sistemas de GLP</span></label>
               </div>
               <p class="field__error" data-error="servicio"></p>
               <div class="field">
@@ -1221,7 +1214,7 @@
           </details>
           <details class="faq__item reveal">
             <summary>¿Cómo solicito una cotización?<svg class="i"><use href="#i-chev-down"/></svg></summary>
-            <p>Completa el <a href="#contacto">formulario de cotización</a> (toma menos de un minuto), escríbenos por WhatsApp al 320 948 5534 o al 322 361 8360, o envíanos un correo a todogassyr@hotmail.com. Te respondemos en horario de atención.</p>
+            <p>Completa el <a href="#contacto">formulario de cotización</a> para redes de gas natural, sistemas de GLP o mantenimiento (toma menos de un minuto), escríbenos por WhatsApp al 320 948 5534 o al 322 361 8360, o envíanos un correo a todogassyr@hotmail.com. Te respondemos en horario de atención.</p>
           </details>
           <details class="faq__item reveal">
             <summary>¿Qué pasa con el andén o la vía después de la obra?<svg class="i"><use href="#i-chev-down"/></svg></summary>

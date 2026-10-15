@@ -6,3 +6,7 @@ llama-cocina         https://www.figma.com/api/mcp/asset/fc6499ea-9ff7-437e-9390
 prueba-hermeticidad  https://www.figma.com/api/mcp/asset/d6685772-648b-4ccd-aaba-31863b64a37e.png
 termofusion          https://www.figma.com/api/mcp/asset/12455ded-af73-4bf5-89c3-e40ed9414f5f.png
 pueblo-aereo         https://www.figma.com/api/mcp/asset/f400c5bc-49b4-4992-b69b-76edcebb3894.png
+corte-concreto       https://www.figma.com/api/mcp/asset/e57fc0f1-9df1-490e-9707-3ba3b52db532.png
+rotura-concreto      https://www.figma.com/api/mcp/asset/c7a8080f-94fb-495d-94ad-59d0133ab817.png
+excavacion           https://www.figma.com/api/mcp/asset/7b53c2b4-a45e-491b-8065-8920ed46e1d5.png
+senalizacion         https://www.figma.com/api/mcp/asset/3481e5e6-0530-4b86-a28d-0b65747ef3d2.png

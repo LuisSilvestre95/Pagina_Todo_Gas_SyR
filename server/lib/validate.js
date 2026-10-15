@@ -1,15 +1,8 @@
 'use strict';
 
 const TIPOS_CLIENTE = ['hogar', 'comercio', 'industria', 'constructora', 'empresa-servicios', 'otro'];
-const SERVICIOS = [
-  'gas-natural',
-  'glp',
-  'mantenimiento',
-  'obra-civil',
-  'revision-certificacion',
-  'emergencia',
-  'otro',
-];
+// Servicios que se cotizan desde el formulario web.
+const SERVICIOS = ['gas-natural', 'mantenimiento', 'glp'];
 
 const LIMITES = { nombre: 80, telefono: 20, email: 120, municipio: 80, empresa: 100, mensaje: 1500 };
 
