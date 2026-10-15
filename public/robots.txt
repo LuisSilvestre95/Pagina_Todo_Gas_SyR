@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin.html
 Disallow: /api/
 
-Sitemap: https://todogassyr.com/sitemap.xml
+Sitemap: https://luissilvestre95.github.io/Pagina_Todo_Gas_SyR/sitemap.xml

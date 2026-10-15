@@ -27,7 +27,7 @@ function buildConfig(overrides = {}) {
     host: env.HOST || '0.0.0.0',
     publicDir: path.join(ROOT, 'public'),
     dataDir: env.DATA_DIR ? path.resolve(env.DATA_DIR) : path.join(ROOT, 'data'),
-    siteUrl: (env.SITE_URL || 'https://todogassyr.com').replace(/\/$/, ''),
+    siteUrl: (env.SITE_URL || 'https://luissilvestre95.github.io/Pagina_Todo_Gas_SyR').replace(/\/$/, ''),
     adminToken: env.ADMIN_TOKEN || '',
     trustProxy: env.TRUST_PROXY === '1' || env.TRUST_PROXY === 'true',
     rateLimit: {
@@ -40,7 +40,7 @@ function buildConfig(overrides = {}) {
       secure: env.SMTP_SECURE === 'true',
       user: env.SMTP_USER || '',
       pass: env.SMTP_PASS || '',
-      from: env.MAIL_FROM || 'TODO GAS SYR <no-reply@todogassyr.com>',
+      from: env.MAIL_FROM || 'TODO GAS SYR <todogassyr@hotmail.com>',
       to: env.MAIL_TO || 'todogassyr@hotmail.com',
     },
     webhookUrl: env.WEBHOOK_URL || '',

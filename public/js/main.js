@@ -45,6 +45,23 @@
     return `https://wa.me/${numero}?text=${encodeURIComponent(text)}`;
   }
 
+  /* ---------- Imágenes con respaldo (fotos IA → fotos reales de obra) ---------- */
+  function useFallback(img) {
+    const fb = img.dataset.fallback;
+    if (!fb || img.dataset.fellBack) return;
+    img.dataset.fellBack = '1';
+    img.closest('picture')?.querySelectorAll('source').forEach((src) => src.remove());
+    img.src = fb;
+    const cap = img.dataset.fallbackCaption;
+    const fig = img.closest('figure');
+    if (cap && fig?.querySelector('figcaption')) fig.querySelector('figcaption').textContent = cap;
+    fig?.querySelector('.service__badge')?.remove();
+  }
+  $$('img[data-fallback]').forEach((img) => {
+    img.addEventListener('error', () => useFallback(img));
+    if (img.complete && img.naturalWidth === 0) useFallback(img);
+  });
+
   /* ---------- Año ---------- */
   const year = $('#year');
   if (year) year.textContent = new Date().getFullYear();
@@ -210,6 +227,20 @@
       5: { title: 'Gasodomésticos', img: 'assets/img/hogar/gasodomestico', alt: 'Estufa a gas encendida',
         text: 'Estufa, calentador y demás equipos se conectan con personal técnico certificado. Con la instalación aprobada, el gas queda listo para usar de forma segura.' },
     };
+    const STEP1 = {
+      gn: STEPS[1],
+      glp: { title: 'Planta y red de distribución de GLP', img: 'assets/img/obra/05-tendido-tuberia', alt: 'Tendido de tubería de polietileno en la zanja',
+        text: 'El GLP se almacena en tanques estacionarios en una planta y desde allí viaja por la red de polietileno enterrada bajo calles y andenes hasta cada predio. Así lo hicimos en Chivor, Pisba y municipios de Antioquia.' },
+    };
+    let sistema = 'gn';
+    journey.dataset.sistema = sistema;
+    $$('.journey__system button', journey).forEach((b) => b.addEventListener('click', () => {
+      sistema = b.dataset.sistema;
+      journey.dataset.sistema = sistema;
+      $$('.journey__system button', journey).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      STEPS[1] = STEP1[sistema];
+      go(1);
+    }));
     const img = $('#journeyImg');
     const title = $('#journeyTitle');
     const text = $('#journeyText');
@@ -249,6 +280,20 @@
     go(1);
   }
 
+  /* ---------- Anatomía de la zanja ---------- */
+  const trench = $('#zanja');
+  if (trench) {
+    const setLayer = (n) => {
+      trench.dataset.active = n || '';
+      $$('[data-layer]', trench).forEach((el) => el.classList.toggle('is-active', el.dataset.layer === n));
+    };
+    $$('.trench__list li, .tlabel, .layer', trench).forEach((el) => {
+      el.addEventListener('mouseenter', () => setLayer(el.dataset.layer));
+      el.addEventListener('click', () => setLayer(el.dataset.layer));
+    });
+    trench.addEventListener('mouseleave', () => setLayer(''));
+  }
+
   /* ---------- Mapa de cobertura (Leaflet) ---------- */
   const mapEl = $('#map');
   const townBtns = $$('#coverageList button[data-lat]');
@@ -283,7 +328,7 @@
       const icon = L.divIcon({ className: cls, html: '<span></span>', iconSize: [24, 24] });
       const marker = L.marker(latlng, { icon, title: name, keyboard: true, zIndexOffset: isHq ? 1000 : 0 })
         .addTo(map)
-        .bindPopup(`<strong>${name}</strong><br>${dept}${extra ? ` · ${extra}` : ''}`);
+        .bindPopup(`<strong>${name}</strong><br>${dept}${extra ? ` · ${extra}` : ''}${btn.dataset.note ? `<br><small>${btn.dataset.note}. Ubicación de referencia del municipio.</small>` : ''}`);
       marker.bindTooltip(name, { direction: 'top', offset: [0, -10] });
       markers.set(btn, marker);
       bounds.push(latlng);
@@ -451,7 +496,7 @@
     // Autocompletado de municipios desde la lista de cobertura.
     const dl = $('#municipios');
     if (dl) {
-      const names = new Set(['Bogotá D.C.']);
+      const names = new Set(['Bogotá D.C.', 'El Marfil (Puerto Boyacá)', 'Puerto Romero (Puerto Boyacá)', 'Romerito (Puerto Boyacá)']);
       $$('#coverageList .towns li').forEach((li) => names.add((li.querySelector('button, span')?.childNodes[0].textContent || '').trim()));
       [...names].filter(Boolean).sort((a, b) => a.localeCompare(b, 'es')).forEach((n) => {
         const o = document.createElement('option');
@@ -583,6 +628,8 @@
       btnSubmit.querySelector('.btn__label').textContent = 'Enviando…';
 
       try {
+        // En GitHub Pages u otro hosting estático no hay API: se continúa por WhatsApp.
+        if (/github\.io$/.test(location.hostname) || location.protocol === 'file:') throw new Error('sin backend');
         const res = await fetch('/api/contacto', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },

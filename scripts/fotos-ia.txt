@@ -1,0 +1,8 @@
+# Fotos generadas con IA (Figma AI, modelo gemini-3.1-flash-image) — imágenes ILUSTRATIVAS.
+# Formato: nombre-de-archivo URL   (las URL de Figma caducan 7 días después de generarse)
+hero-obra            https://www.figma.com/api/mcp/asset/8ced41a1-5b92-48c1-bb8a-ef62a096afc9.png
+planta-glp           https://www.figma.com/api/mcp/asset/6ef9c459-7a8a-4cf2-9e0c-e57d28ddbed5.png
+llama-cocina         https://www.figma.com/api/mcp/asset/fc6499ea-9ff7-437e-9390-4f9b0f23de80.png
+prueba-hermeticidad  https://www.figma.com/api/mcp/asset/d6685772-648b-4ccd-aaba-31863b64a37e.png
+termofusion          https://www.figma.com/api/mcp/asset/12455ded-af73-4bf5-89c3-e40ed9414f5f.png
+pueblo-aereo         https://www.figma.com/api/mcp/asset/f400c5bc-49b4-4992-b69b-76edcebb3894.png

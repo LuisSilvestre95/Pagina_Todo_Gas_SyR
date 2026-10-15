@@ -26,6 +26,18 @@ convert foto.jpg -resize 1600x -strip -interlace Plane -quality 84 nombre.jpg
 
 Fotos que harían la diferencia: el equipo completo con dotación, la termofusión en primer plano, una planta de GLP y una obra terminada.
 
+## Fotos generadas con IA
+
+Las fotos de `public/assets/img/ia/` (portada, tarjetas de servicios y franja final) son **imágenes ilustrativas generadas con IA** y la página las rotula como tales. La galería de "Registro fotográfico" usa solo fotos reales de obra.
+
+- La lista de fotos y sus URL está en `scripts/fotos-ia.txt`. El flujo de GitHub Actions *Publicar en GitHub Pages* las descarga, las optimiza (JPG + WebP) y las guarda en el repositorio la primera vez que se ejecuta.
+- Si una foto IA no existe, la página muestra automáticamente la foto real equivalente (atributo `data-fallback`).
+- Para reemplazar una foto IA por una real, guarda tu foto con el mismo nombre (`hero-obra.jpg` y `hero-obra.webp`) y quita el rótulo "Imagen ilustrativa" de esa imagen en `index.html`.
+
 ## Hoja de vida empresarial descargable
 
-El botón de la ficha empresarial pide la hoja de vida por WhatsApp. No se publicó el PDF porque incluye la **firma** y la **cédula** del representante legal. Si quieres ofrecerlo como descarga directa, prepara una versión pública sin esos datos, guárdala en `public/docs/` y cambia el enlace del botón.
+`public/docs/Hoja_de_Vida_TODO_GAS_SYR.pdf` es una **versión pública** de la hoja de vida: el número de cédula, la firma y el sello del representante legal están tapados, y las páginas son imágenes, así que no queda texto oculto con esos datos. El documento firmado y los anexos se piden por WhatsApp.
+
+## Mapa
+
+Las coordenadas corresponden al casco urbano de cada municipio. El Marfil, Puerto Romero y Romerito pertenecen a Puerto Boyacá (así figuran en las resoluciones CREG 043 y 044 de 2021) y se muestran con un solo punto en el casco urbano de ese municipio.

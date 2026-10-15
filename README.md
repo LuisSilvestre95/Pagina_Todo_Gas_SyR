@@ -2,7 +2,7 @@
 
 Sitio web de **TODO GAS SYR S.A.S.** (NIT 901.126.243-3): diseño, construcción, instalación y mantenimiento de redes de **gas natural** y **GLP** en Boyacá, Cundinamarca, Bogotá D.C. y Antioquia.
 
-Todo el contenido sale de la *Hoja de Vida Empresarial* (octubre de 2026). Las fotografías son las del registro de obra real de la empresa.
+Todo el contenido sale de la *Hoja de Vida Empresarial* (octubre de 2026). La galería usa las fotografías reales de obra; las fotos de portada y servicios son ilustraciones generadas con IA y están rotuladas como tales.
 
 ## Qué incluye
 
@@ -13,6 +13,8 @@ Todo el contenido sale de la *Hoja de Vida Empresarial* (octubre de 2026). Las f
 | **Backend** (`server/`) | Node.js **sin dependencias obligatorias**: servidor estático con compresión, caché y cabeceras de seguridad (CSP), API de solicitudes con validación, anti-spam y límite por IP, notificación por correo o webhook (opcionales) |
 | **Panel** (`/admin.html`) | Lista de solicitudes, búsqueda, cambio de estado (nueva → contactada → cotizada → ganada/descartada) y exportación a CSV |
 | **Legal** (`/privacidad.html`) | Política de tratamiento de datos (Ley 1581 de 2012) enlazada desde el formulario |
+
+**Sitio publicado:** https://luissilvestre95.github.io/Pagina_Todo_Gas_SyR/ (GitHub Pages; ver [docs/DESPLIEGUE.md](docs/DESPLIEGUE.md)).
 
 ## Arranque rápido
 

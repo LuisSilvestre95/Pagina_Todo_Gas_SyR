@@ -1,5 +1,17 @@
 # Despliegue
 
+## Opción 0 · GitHub Pages (la que está configurada hoy)
+
+Dirección del sitio: **https://luissilvestre95.github.io/Pagina_Todo_Gas_SyR/**
+
+1. En GitHub, abre el repositorio → **Settings → Pages** y en *Build and deployment → Source* elige **GitHub Actions** (solo se hace una vez).
+2. Cada `push` a la rama principal o a `claude/exciting-gauss-3x4kud` ejecuta el flujo `.github/workflows/pages.yml`, que publica la carpeta `public/`. También se puede lanzar a mano desde la pestaña **Actions → Publicar en GitHub Pages → Run workflow**.
+3. Si GitHub muestra *"Branch is not allowed to deploy to github-pages"*, entra a **Settings → Environments → github-pages** y agrega la rama, o fusiona los cambios a la rama principal.
+
+En GitHub Pages no hay servidor: el formulario envía la solicitud por WhatsApp y el panel `/admin.html` no se publica. Para tener el panel y recibir solicitudes por correo, usa una de las opciones siguientes.
+
+Cuando compren un dominio propio, se configura en **Settings → Pages → Custom domain**, y luego hay que actualizar `canonical`, `og:url`, `sitemap.xml` y `SITE_URL` (busca `luissilvestre95.github.io`).
+
 ## Opción A · VPS (recomendada, sitio completo con panel)
 
 ```bash
@@ -14,7 +26,7 @@ Mantenlo vivo con `pm2 start server/index.js --name todogas` o con un servicio s
 Ejemplo con Caddy (HTTPS automático):
 
 ```
-todogassyr.com, www.todogassyr.com {
+tudominio.com, www.tudominio.com {
   reverse_proxy 127.0.0.1:3000
 }
 ```
@@ -52,7 +64,7 @@ Microsoft exige una **contraseña de aplicación** y que la cuenta tenga SMTP ha
 
 ## Lista de verificación al publicar
 
-- [ ] Dominio y HTTPS activos; actualizar `SITE_URL`, el `canonical`, `og:url` y `sitemap.xml` si el dominio no es `todogassyr.com`.
+- [ ] Dominio y HTTPS activos; actualizar `SITE_URL`, el `canonical`, `og:url` y `sitemap.xml` si cambia el dominio.
 - [ ] `ADMIN_TOKEN` largo y aleatorio.
 - [ ] Hacer una solicitud de prueba y verla en `/admin.html`.
 - [ ] Registrar el sitio en Google Search Console y enviar el `sitemap.xml`.
