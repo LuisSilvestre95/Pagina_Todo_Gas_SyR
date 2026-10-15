@@ -1,6 +1,6 @@
 'use strict';
 
-const TIPOS_CLIENTE = ['hogar', 'comercio', 'industria', 'constructora', 'empresa-servicios', 'otro'];
+const TIPOS_CLIENTE = ['hogar', 'comercio', 'industria', 'otro'];
 // Servicios que se cotizan desde el formulario web.
 const SERVICIOS = ['gas-natural', 'mantenimiento', 'glp'];
 
